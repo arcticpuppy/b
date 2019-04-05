@@ -15,8 +15,7 @@ if __name__ == "__main__":
     X, y = get_data()
     # X, y = shuffle(X, y, random_state=2018)
     print("=========Split train sets and test sets=========")
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.01, random_state=2018)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.01, random_state=2018)
     del X, y
 
     print("=========          Build model         =========")
@@ -24,11 +23,9 @@ if __name__ == "__main__":
     model.compile()
 
     print("=========       Start train model      =========")
-    ModelCheckpoint = tf.keras.callbacks.ModelCheckpoint(
-        "model/val_best_model.h5", monitor="val_loss", verbose=1,
+    ModelCheckpoint = tf.keras.callbacks.ModelCheckpoint("model/val_best_model.h5", monitor="val_loss", verbose=1,
                                                          save_best_only=True)
-    model.fit(
-        X_train, y_train, batch_size=1, epochs=10, validation_split=0.01, callbacks=[ModelCheckpoint])
+    model.fit(X_train, y_train, batch_size=1, epochs=10, validation_split=0.01, callbacks=[ModelCheckpoint])
     print("=========    Save last time model      =========")
 
     model.model.save("model/model_final_time.h5")

@@ -21,8 +21,8 @@ def _load():
     if not os.path.exists("./data/images.h5"):
 
         images = []
-        for i in range(1, 4):
-            now_file_path = "../data/Image/IM" + str(i) + ".png"
+        for i in range(1, 3):#源代码为1-2201
+            now_file_path = "./data/Image/IM" + str(i) + ".png"
             image = np.array(ndimage.imread(now_file_path, flatten=False))
             images.append(image)  # images shape=(m,64,64,3)
         images = np.array(images, copy=True)
@@ -52,8 +52,8 @@ def _load():
 
     #images /= 255
     train_image1 = np.expand_dims(images, -1)
-    train_image = np.reshape(train_image1,[2,512,512,1])
-    print(train_image.shape) 
+    train_image = np.reshape(train_image1,[2,512,512,1])#根据报错更改图片格式
+    print(train_image.shape)
     train_label1 = np.expand_dims(labels, -1)
     train_label = np.reshape(train_label1,[2,512,512,1])
     print(train_label.shape)

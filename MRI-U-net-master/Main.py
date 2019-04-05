@@ -25,7 +25,7 @@ if __name__ == "__main__":
     print("=========       Start train model      =========")
     ModelCheckpoint = tf.keras.callbacks.ModelCheckpoint("model/val_best_model.h5", monitor="val_loss", verbose=1,
                                                          save_best_only=True)
-    model.fit(X_train, y_train, batch_size=1, epochs=10, validation_split=0.01, callbacks=[ModelCheckpoint])
+    model.fit(X_train, y_train, batch_size=3, epochs=10, validation_split=0.01, callbacks=[ModelCheckpoint])
     print("=========    Save last time model      =========")
 
     model.model.save("model/model_final_time.h5")
